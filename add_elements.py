@@ -10,10 +10,10 @@ def parse_expenses (expenses_string) :
         2023-01-03 -2.72 EUR
     """
     expenses = []
-    for line in expenses_string.splitlines () :
+    for line in expenses_string.splitlines():
         if line.startswith("#"):
             continue
-        date, value, currency = line.split()
+        date, value, currency = line.split("#")
         expenses.append((float (value),
                         currency,
                         datetime.datetime.strptime(date, "%Y-%m-%d")))

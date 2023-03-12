@@ -11,8 +11,3 @@ def speak():
 
 # Call function speak()
 speak()
-
-
-
-
-
