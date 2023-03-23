@@ -1,20 +1,16 @@
 import re
 
-regex_a = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+e_regex = r'^[\w\.\+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$'
+p_regex = r'^(\+)?1?\d{9,15}$'
+s_regex = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
 
-regex_b = r'^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$'
-
-def check(myText, regex):
-
-    if(re.fullmatch(regex, myText)):
-        print("Valid")
- 
+def checkvalid(text, regex):
+    if re.search(regex, text):
+        return True
     else:
-        print("Invalid")
-
-# Driver Code
-if __name__ == '__main__' :
-    check("", regex_a)
-    check("", regex_b)
-
- 
+        return False
+    
+if __name__ == '__main__':
+    print(("valid", "invalid")[checkvalid('',e_regex)])
+    print(("valid", "invalid")[checkvalid('',p_regex)])
+    print(("valid", "invalid")[checkvalid('',s_regex)])

@@ -1,5 +1,5 @@
 
-import add_elements
+import parse_expenses
 
 import unittest
 import datetime
@@ -12,7 +12,7 @@ class TestParseExpenses(unittest.TestCase):
         expected_output = [(-34.01, 'USD', datetime.datetime(2023, 1, 2)), 
                            (2.59, 'DKK', datetime.datetime(2023, 1, 3)), 
                            (-2.72, 'EUR', datetime.datetime(2023, 1, 3))]
-        self.assertEqual(add_elements.parse_expenses(expenses_data), expected_output)
+        self.assertEqual(parse_expenses.parse_expenses(expenses_data), expected_output)
         
     def test_parse_expenses_with_comments(self):
         expenses_data = '''# This is a comment
@@ -23,7 +23,7 @@ class TestParseExpenses(unittest.TestCase):
         expected_output = [(-34.01, 'USD', datetime.datetime(2023, 1, 2)), 
                            (2.59, 'DKK', datetime.datetime(2023, 1, 3)), 
                            (-2.72, 'EUR', datetime.datetime(2023, 1, 3))]
-        self.assertEqual(add_elements.parse_expenses(expenses_data), expected_output)
+        self.assertEqual(parse_expenses.parse_expenses(expenses_data), expected_output)
         
     def test_parse_expenses_with_empty_lines(self):
         expenses_data = '''
@@ -36,14 +36,14 @@ class TestParseExpenses(unittest.TestCase):
         expected_output = [(-34.01, 'USD', datetime.datetime(2023, 1, 2)), 
                            (2.59, 'DKK', datetime.datetime(2023, 1, 3)), 
                            (-2.72, 'EUR', datetime.datetime(2023, 1, 3))]
-        self.assertEqual(add_elements.parse_expenses(expenses_data), expected_output)
+        self.assertEqual(parse_expenses.parse_expenses(expenses_data), expected_output)
         
     def test_parse_expenses_with_only_comments(self):
         expenses_data = '''# This is a comment
         # Another comment
         # Yet another comment'''
         expected_output = []
-        self.assertEqual(add_elements.parse_expenses(expenses_data), expected_output)
+        self.assertEqual(parse_expenses.parse_expenses(expenses_data), expected_output)
         
 if __name__ == '__main__':
     unittest.main()
