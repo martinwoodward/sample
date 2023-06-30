@@ -1,6 +1,6 @@
 import datetime
 
-def parse_expenses (expenses_string) :
+def parse_expenses(expenses_string):
     """Parse the list of expenses and return the 
     list of triples (date, value, currency).
     Ignore lines starting with #.
@@ -15,9 +15,7 @@ def parse_expenses (expenses_string) :
         if line.startswith("#"):
             continue
         date, value, currency = line.split(",")
-        expenses.append((float (value),
-                        currency,
-                        datetime.datetime.strptime(date, "%Y-%m-%d")))
+        expenses.append((datetime.datetime.strptime(date, "%Y-%m-%d"), float(value), currency))
     return expenses
 
 expenses_data = '''2023-01-02 -34.01 USD
