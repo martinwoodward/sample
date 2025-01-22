@@ -9,10 +9,19 @@ Chat functionality in [GitHub Copilot](https://gh.io/copilotx)
 Propose a fix for the bugs in my code.
 Write a set of unit test functions for the selected code
 
-#### unknown.py
-Explain the selected code
-Make the selected code more readable
-Separate out the functions to validate email address and phone number
+### HTML Rendering Pipeline
+```mermaid
+sequenceDiagram
+    participant dotcom
+    participant iframe
+    participant viewscreen
+    dotcom->>iframe: loads html w/ iframe url
+    iframe->>viewscreen: request template
+    viewscreen->>iframe: html & javascript
+    iframe->>dotcom: iframe ready
+    dotcom->>iframe: set mermaid data on iframe
+    iframe->>iframe: render mermaid
+```
 
 #### Questions
 How does variable visibility work in python?
